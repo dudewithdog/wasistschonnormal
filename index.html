@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Was ist schon normal? | Hürden, Umwege und zweite Anläufe</title>
+
+  <style>
+    :root {
+      --paper: #f7f0df;
+      --paper-soft: #fffaf0;
+      --ink: #1f1b16;
+      --muted: #5f564c;
+      --line: #d8c9ac;
+      --magenta: #b60057;
+      --magenta-soft: #f7e6ef;
+      --green: #1f873f;
+      --blue: #0f6f95;
+      --red: #b30f1f;
+      --black: #242424;
+      --white: #ffffff;
+      --shadow: 0 10px 24px rgba(55, 38, 18, .12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e9dfca;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 28px 70px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)),
+        var(--paper);
+      min-height: 100vh;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .meta {
+      font-size: .82rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      letter-spacing: -.04em;
+      max-width: 780px;
+    }
+
+    .subtitle {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--magenta);
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .kacheln {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 290px;
+    }
+
+    .kacheln img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 3px 8px rgba(0,0,0,.12);
+    }
+
+    .lead {
+      font-size: 1.14rem;
+      max-width: 760px;
+      margin: 0 0 24px;
+    }
+
+    .lead strong {
+      color: var(--magenta);
+    }
+
+    .toc-note {
+      background: var(--paper-soft);
+      border-left: 6px solid var(--magenta);
+      padding: 18px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: var(--shadow);
+      margin: 26px 0 34px;
+      max-width: 860px;
+    }
+
+    .toc-note p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      margin: 34px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--magenta);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.55rem);
+      color: var(--ink);
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      margin-bottom: 8px;
+      color: var(--magenta);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: rgba(255,255,255,.54);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(55, 38, 18, .08);
+    }
+
+    .card p {
+      margin: 0 0 12px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      margin: .32rem 0;
+    }
+
+    .path {
+      background: #211f1c;
+      color: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 28px 0 36px;
+      box-shadow: var(--shadow);
+      border: 8px solid #7a6348;
+    }
+
+    .path h2 {
+      color: white;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      margin-bottom: 18px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+
+    .step {
+      border-top: 4px solid var(--magenta);
+      padding-top: 12px;
+      min-width: 0;
+    }
+
+    .step strong {
+      display: block;
+      color: #ff8fbf;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .92rem;
+      margin-bottom: 6px;
+    }
+
+    .step span {
+      color: #f7f0df;
+      font-size: .95rem;
+      display: block;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .link-card {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .link-card:hover,
+    .link-card:focus {
+      transform: translateY(-2px);
+      border-color: var(--magenta);
+      background: white;
+      outline: none;
+    }
+
+    .link-card b {
+      color: var(--magenta);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .warn {
+      background: #fff5f2;
+      border-color: #e7b5a7;
+    }
+
+    .good {
+      background: #f4fbf4;
+      border-color: #b8d8bd;
+    }
+
+    .quote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 3vw, 1.9rem);
+      color: var(--magenta);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+      margin: 34px 0;
+      text-align: center;
+    }
+
+    .protocol {
+      background: #fff;
+      border: 1px dashed var(--magenta);
+      padding: 18px;
+      border-radius: 14px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .92rem;
+      overflow-x: auto;
+    }
+
+    .footer-qr {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 20px;
+      align-items: center;
+      border-top: 3px solid var(--magenta);
+      margin-top: 44px;
+      padding-top: 24px;
+    }
+
+    .footer-qr img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      background: white;
+      padding: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .asset-note {
+      font-size: .86rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .kacheln {
+        justify-content: flex-start;
+        max-width: none;
+      }
+
+      .grid,
+      .grid.two,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-qr {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-qr img {
+        width: 112px;
+        height: 112px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        max-width: none;
+        padding: 24mm;
+        background: var(--paper);
+      }
+
+      .link-card {
+        break-inside: avoid;
+      }
+
+      a::after {
+        content: " (" attr(href) ")";
+        font-size: .75em;
+        color: var(--muted);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <div class="meta">Kapitel 3 · Teil 3 · Schule und Bildungssystem</div>
+        <h1>Was ist schon normal?</h1>
+        <div class="subtitle">Hürden, Umwege und zweite Anläufe im Bildungsweg</div>
+      </div>
+
+      <div class="kacheln" aria-label="Funktionszeichen">
+        <!-- Nur Originalkacheln einsetzen. Keine KI-Icons, keine Ersatzsymbole. -->
+        <img src="assets/kachel_vertiefung_original.png" alt="Vertiefung">
+        <img src="assets/kachel_online_original.png" alt="Online möglich">
+        <img src="assets/kachel_lebensordner_original.png" alt="Lebensordner">
+        <img src="assets/kachel_kantonal_original.png" alt="Kantonal unterschiedlich">
+        <img src="assets/kachel_nachpruefen_original.png" alt="Selber nachprüfen">
+        <img src="assets/kachel_beratung_original.png" alt="Lass dich beraten">
+      </div>
+    </header>
+
+    <p class="lead">
+      Nicht jeder Bildungsweg läuft geradeaus. Manche brauchen Unterstützung,
+      manche mehr Zeit, manche einen zweiten Anlauf. <strong>Wichtig ist nicht,
+      ob es eine Kurve gibt, sondern wie man damit umgeht.</strong>
+    </p>
+
+    <div class="toc-note">
+      <p>
+        Diese Zusatzseite sammelt Fragen, Stellen, Formulare und Unterlagen, die
+        wichtig werden können, wenn Schule nicht nach Schema läuft. Vieles ist
+        kantonal geregelt. Prüfe Zuständigkeiten, Fristen und Formulare immer bei
+        Schule, Gemeinde oder Wohnkanton.
+      </p>
+    </div>
+
+    <section class="path" aria-labelledby="papierweg">
+      <h2 id="papierweg">Der Papierweg, wenn Schule nicht geradeaus läuft</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>Auffallen</strong>
+          <span>Was ist anders? Seit wann? In welchen Situationen?</span>
+        </div>
+        <div class="step">
+          <strong>Gespräch</strong>
+          <span>Klassenlehrperson, Schulleitung oder Fachstelle einbeziehen.</span>
+        </div>
+        <div class="step">
+          <strong>Abklärung / Gesuch</strong>
+          <span>Prüfen lassen, Unterstützung beantragen, Zuständigkeit klären.</span>
+        </div>
+        <div class="step">
+          <strong>Entscheid</strong>
+          <span>Massnahmen, Rahmen oder Nachteilsausgleich schriftlich festhalten.</span>
+        </div>
+        <div class="step">
+          <strong>Ablage</strong>
+          <span>Berichte, Bestätigungen, Zeugnisse und Entscheide sichern.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sortieren">
+      <div class="section-title">
+        <div class="section-number">1</div>
+        <h2 id="sortieren">Erst sortieren: Was ist eigentlich los?</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Genauer hinschauen</h3>
+          <p>Nicht jede schlechte Note braucht eine Abklärung. Aber ein Muster über längere Zeit sollte nicht einfach weggelächelt werden.</p>
+          <ul>
+            <li>Schwierigkeiten wiederholen sich.</li>
+            <li>Der Druck wird immer grösser.</li>
+            <li>Ein Bereich blockiert auffällig.</li>
+            <li>Rückmeldungen der Schule häufen sich.</li>
+            <li>Potenzial ist sichtbar, kommt aber nicht zum Tragen.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Beispiele sammeln</h3>
+          <p>Hilfreich sind konkrete Beobachtungen, nicht nur ein Bauchgefühl.</p>
+          <ul>
+            <li>Tests, Hefte, Zeugnisse</li>
+            <li>Mails und Rückmeldungen</li>
+            <li>eigene Gesprächsnotizen</li>
+            <li>Beispiele aus dem Alltag</li>
+            <li>Fragen, die beim nächsten Gespräch geklärt werden sollen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="unterstuetzung">
+      <div class="section-title">
+        <div class="section-number">2</div>
+        <h2 id="unterstuetzung">Wenn Lernen Unterstützung braucht</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Themen</h3>
+          <ul>
+            <li>LRS / Legasthenie</li>
+            <li>Dyskalkulie</li>
+            <li>ADHS</li>
+            <li>Logopädie</li>
+            <li>Konzentration, Sprache, Motorik</li>
+            <li>Förderung und Nachteilsausgleich</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Fragen an die Schule</h3>
+          <ul>
+            <li>Was wurde bereits beobachtet?</li>
+            <li>Welche Unterstützung läuft schon?</li>
+            <li>Reicht Förderung im Schulalltag?</li>
+            <li>Braucht es eine Abklärung?</li>
+            <li>Wer entscheidet über das weitere Vorgehen?</li>
+          </ul>
+        </div>
+
+        <div class="card good">
+          <h3>Nachteilsausgleich</h3>
+          <p>
+            Nachteilsausgleich bedeutet nicht: weniger leisten. Die Bedingungen
+            werden angepasst, damit die geforderten Leistungen gezeigt werden können.
+          </p>
+          <p class="small">
+            Lernziele bleiben grundsätzlich gleich. Das ist nicht dasselbe wie eine Lernzielanpassung.
+          </p>
+        </div>
+      </div>
+
+      <div class="links" aria-label="Nützliche Links zu Unterstützung">
+        <a class="link-card" href="https://www.sbfi.admin.ch/de/nachteilsausgleich" target="_blank" rel="noopener">
+          <b>SBFI: Nachteilsausgleich bei Prüfungen</b>
+          Offizielle Erklärung zu Ziel und Grenzen des Nachteilsausgleichs.
+        </a>
+        <a class="link-card" href="https://www.edk.ch/de/bildungssystem-ch/sonderpaedagogik-1" target="_blank" rel="noopener">
+          <b>EDK: Sonderpädagogik</b>
+          Überblick zur Unterstützung von Kindern und Jugendlichen mit besonderem Bildungsbedarf.
+        </a>
+        <a class="link-card" href="https://www.verband-dyslexie.ch/Nachteilsausgleich.html" target="_blank" rel="noopener">
+          <b>Verband Dyslexie Schweiz: Nachteilsausgleich</b>
+          Informationen zu Legasthenie, Dyskalkulie und möglichen Anpassungen.
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="weg-anders">
+      <div class="section-title">
+        <div class="section-number">3</div>
+        <h2 id="weg-anders">Wenn der Schulweg anders verläuft</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Wiederholen oder überspringen</h3>
+          <ul>
+            <li>Wer empfiehlt den Schritt?</li>
+            <li>Wer entscheidet?</li>
+            <li>Gibt es eine Einstufung oder Probezeit?</li>
+            <li>Was wird schriftlich bestätigt?</li>
+            <li>Welche Folgen hat es für den nächsten Übergang?</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Schulwechsel oder anderer Rahmen</h3>
+          <ul>
+            <li>Welche Schule kommt in Frage?</li>
+            <li>Welche Fristen gelten?</li>
+            <li>Welche Unterlagen werden verlangt?</li>
+            <li>Wer trägt Kosten?</li>
+            <li>Was muss beim Übergang gesichert werden?</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Auslandsjahr</h3>
+          <ul>
+            <li>Urlaubsgesuch oder Beurlaubung</li>
+            <li>Anerkennung von Leistungen</li>
+            <li>Rückkehr in passende Klasse</li>
+            <li>Nachweise der Gastschule</li>
+            <li>Visa, Versicherung, Finanzierung</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="links" aria-label="Nützliche Links zu Bildungswegen">
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/2800" target="_blank" rel="noopener">
+          <b>berufsberatung.ch: Schweizer Bildungssystem</b>
+          Übersicht über Bildungswege und Abschlüsse in der Schweiz.
+        </a>
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/56918" target="_blank" rel="noopener">
+          <b>berufsberatung.ch: Ergänzungsprüfung Passerelle</b>
+          Weg von Berufs- oder Fachmaturität zu universitären Hochschulen.
+        </a>
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/10549" target="_blank" rel="noopener">
+          <b>berufsberatung.ch: Maturität auf dem 2. Bildungsweg</b>
+          Informationen zum späteren Nachholen der gymnasialen Maturität.
+        </a>
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/2732" target="_blank" rel="noopener">
+          <b>berufsberatung.ch: Schnupperlehre</b>
+          Hinweise zur Planung und zur Erlaubnis der Schule während der Schulzeit.
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="holpert">
+      <div class="section-title">
+        <div class="section-number">4</div>
+        <h2 id="holpert">Wenn es holpert</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Schlechte Noten</h3>
+          <p>
+            Schlechte Noten sind nicht bedeutungslos. Aber sie sind auch kein Urteil
+            über ein ganzes Leben. Wichtig ist, wann sie relevant werden.
+          </p>
+          <ul>
+            <li>Frühe Zeugnisse verlieren später oft an Gewicht.</li>
+            <li>An Übergängen zählen sie stärker.</li>
+            <li>Später kommen Ausbildung, Arbeit, Erfahrung und neue Nachweise dazu.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Schwierige Situation</h3>
+          <p>
+            Bei Konflikten mit Lehrpersonen oder Schule hilft eine ruhige Papier-Spur.
+            Nicht eskalieren, aber auch nicht alles nur mündlich lassen.
+          </p>
+          <ul>
+            <li>Beispiele notieren.</li>
+            <li>Gespräch verlangen.</li>
+            <li>Vereinbarungen schriftlich festhalten.</li>
+            <li>bei Bedarf nächste Stelle einbeziehen.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote">
+      Ein Zeugnis verschwindet nicht. Aber es verliert mit der Zeit seine Schwerkraft.
+    </div>
+
+    <section class="section" aria-labelledby="protokoll">
+      <div class="section-title">
+        <div class="section-number">5</div>
+        <h2 id="protokoll">Gespräche, Protokolle und KI</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card warn">
+          <h3>Gespräche nicht heimlich aufnehmen</h3>
+          <p>
+            Gerade bei Schulgesprächen können sensible Daten vorkommen. Eine Aufnahme
+            oder ein KI-Protokoll ist nicht schon deshalb sauber, weil ein Tool es kann.
+          </p>
+          <p>
+            Sicherer: Notizen machen, danach eine kurze Zusammenfassung per E-Mail senden
+            und um Bestätigung oder Korrektur bitten.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Kurzes Protokoll: Muster</h3>
+          <div class="protocol">Guten Tag
+
+Besten Dank für das heutige Gespräch.
+Damit wir den Stand sauber festhalten,
+fasse ich die wichtigsten Punkte kurz zusammen:
+
+- ...
+- ...
+- ...
+
+Vereinbart wurde:
+
+- ...
+- ...
+- ...
+
+Falls ich etwas missverstanden habe,
+bitte ich um kurze Korrektur.
+
+Freundliche Grüsse</div>
+        </div>
+      </div>
+
+      <div class="links" aria-label="Nützliche Links zu Datenschutz">
+        <a class="link-card" href="https://www.edoeb.admin.ch/de/aufzeichnung-von-gespraechen" target="_blank" rel="noopener">
+          <b>EDÖB: Aufzeichnung von Gesprächen</b>
+          Hinweise zu Datenschutz und möglichen strafrechtlichen Fragen.
+        </a>
+        <a class="link-card" href="https://www.edoeb.admin.ch/de/datenbearbeitungen-in-der-cloud" target="_blank" rel="noopener">
+          <b>EDÖB: Datenbearbeitung in der Cloud</b>
+          Hinweise zu Cloud-Diensten, Auftragsbearbeitung und Datenübermittlung.
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="offen">
+      <div class="section-title">
+        <div class="section-number">6</div>
+        <h2 id="offen">Wege bleiben offen</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card good">
+          <h3>Durchlässigkeit</h3>
+          <p>
+            Das Schweizer Bildungssystem ist durchlässig. Ein früher Knick oder ein
+            schwacher Abschluss muss nicht das Ende sein. Spätere Wege brauchen aber oft
+            Nachweise, Zusatzleistungen oder Anerkennungen.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Was später zählen kann</h3>
+          <ul>
+            <li>Zeugnisse und Abschlussbestätigungen</li>
+            <li>Berufsmaturität, Fachmaturität, Passerelle</li>
+            <li>Praktikums- und Arbeitsnachweise</li>
+            <li>Weiterbildungen und höhere Berufsbildung</li>
+            <li>Anerkennung von Diplomen oder Berufsqualifikationen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="links" aria-label="Nützliche Links zu Durchlässigkeit und Anerkennung">
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/4615" target="_blank" rel="noopener">
+          <b>berufsberatung.ch: Vergleich der Hochschultypen</b>
+          Überblick über Zugänge und Durchlässigkeit zwischen Hochschultypen.
+        </a>
+        <a class="link-card" href="https://www.sbfi.admin.ch/de/anerkennung-von-berufsqualifikationen" target="_blank" rel="noopener">
+          <b>SBFI: Anerkennung von Berufsqualifikationen</b>
+          Überblick zu Anerkennungsverfahren und zuständigen Stellen.
+        </a>
+        <a class="link-card" href="https://www.recognition.swiss/de" target="_blank" rel="noopener">
+          <b>recognition.swiss: Anerkennung prüfen</b>
+          Prüfen, ob für einen Beruf eine Anerkennung nötig ist und welche Stelle zuständig ist.
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ablage">
+      <div class="section-title">
+        <div class="section-number">7</div>
+        <h2 id="ablage">Was gehört in die Ablage?</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Schule</h3>
+          <ul>
+            <li>Zeugnisse</li>
+            <li>Schulberichte</li>
+            <li>Gesprächsnotizen</li>
+            <li>Protokolle</li>
+            <li>Förderpläne</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Abklärung und Massnahmen</h3>
+          <ul>
+            <li>Fachberichte</li>
+            <li>Abklärungen</li>
+            <li>Gesuche</li>
+            <li>Entscheide</li>
+            <li>Bestätigungen</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Übergänge</h3>
+          <ul>
+            <li>Anmeldungen</li>
+            <li>Verträge</li>
+            <li>Praktikumsnachweise</li>
+            <li>Auslandsjahr-Unterlagen</li>
+            <li>Anerkennungen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-qr">
+      <img src="assets/qr_was_ist_schon_normal.png" alt="QR-Code zur Zusatzseite">
+      <div>
+        <h2>Scannen und mehr sehen</h2>
+        <p>
+          Diese digitale Zusatzseite ergänzt die Printseite. Sie erklärt, welche Wege,
+          Fragen, Gesuche, Links und Unterlagen wichtig werden können, wenn Schule
+          nicht geradeaus läuft.
+        </p>
+        <p class="asset-note">
+          Hinweis für die Produktion: Kacheln oben nur mit den gelieferten Originaldateien ersetzen.
+          Keine neuen Icons einsetzen.
+        </p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
