@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Was ist schon normal? | Musterbriefe und Papierwege</title>
+  <style>
+    :root {
+      --paper:#f7f0df; --paper-soft:#fffaf0; --ink:#1f1b16; --muted:#5f564c;
+      --line:#d8c9ac; --magenta:#b60057; --magenta-soft:#f7e6ef;
+      --shadow:0 10px 24px rgba(55,38,18,.12); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#e9dfca;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
+    .page{max-width:980px;margin:0 auto;padding:42px 28px 70px;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0)),var(--paper);min-height:100vh}
+    header{position:relative;display:block;border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}
+    header>div:first-child{padding-right:280px}
+    .meta{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:700}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.05;margin:0}
+    h1{font-size:clamp(2.6rem,7vw,5.4rem);letter-spacing:-.04em;max-width:780px}
+    .subtitle{font-family:Georgia,"Times New Roman",serif;color:var(--magenta);font-size:clamp(1.35rem,3vw,2.1rem);margin-top:10px;font-weight:700;max-width:780px}
+    .kacheln{position:absolute;top:0;right:0;display:grid;grid-template-columns:repeat(6,34px);gap:7px;justify-content:end;align-content:start;width:max-content;pointer-events:none;user-select:none}
+    .kacheln img{width:34px;height:34px;border-radius:8px;object-fit:cover;display:block;box-shadow:0 3px 9px rgba(0,0,0,.13)}
+    .lead{font-size:1.14rem;max-width:790px;margin:0 0 24px}
+    .lead strong{color:var(--magenta)}
+    .toc-note{background:var(--paper-soft);border-left:6px solid var(--magenta);padding:18px 20px;border-radius:0 var(--radius) var(--radius) 0;box-shadow:var(--shadow);margin:26px 0 22px;max-width:900px}
+    .toc-note p{margin:0;font-size:1.05rem}
+    .quick-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;overflow-x:auto;padding:14px 0 18px;margin:8px 0 34px;background:linear-gradient(180deg,var(--paper) 0%,rgba(247,240,223,.96) 72%,rgba(247,240,223,0) 100%);scrollbar-width:thin}
+    .quick-nav a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:var(--paper-soft);border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:.94rem;font-weight:700;box-shadow:0 4px 10px rgba(55,38,18,.08)}
+    .quick-nav a:hover,.quick-nav a:focus{color:white;background:var(--magenta);border-color:var(--magenta);outline:none}
+    .section{margin:38px 0;scroll-margin-top:92px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+    .section-number{width:36px;height:36px;border-radius:50%;background:var(--magenta);color:white;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+    h2{font-size:clamp(1.7rem,4vw,2.55rem);color:var(--ink)}
+    h3{font-size:1.28rem;margin-bottom:8px;color:var(--magenta)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid.two{grid-template-columns:repeat(2,1fr)}
+    .card{background:rgba(255,255,255,.54);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 6px 16px rgba(55,38,18,.08)}
+    .card p{margin:0 0 12px} .card p:last-child{margin-bottom:0}
+    ul{margin:10px 0 0;padding-left:1.15rem} li{margin:.32rem 0}
+    .path{background:#211f1c;color:white;border-radius:var(--radius);padding:24px;margin:28px 0 36px;box-shadow:var(--shadow);border:8px solid #7a6348;scroll-margin-top:92px}
+    .path h2{color:white;font-size:clamp(1.45rem,3vw,2rem);margin-bottom:18px}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .step{border-top:4px solid var(--magenta);padding-top:12px;min-width:0}
+    .step strong{display:block;color:#ff8fbf;text-transform:uppercase;letter-spacing:.04em;font-size:.92rem;margin-bottom:6px}
+    .step span{color:#f7f0df;font-size:.95rem;display:block}
+    .badge{display:inline-block;background:var(--magenta-soft);color:var(--magenta);font-weight:800;border-radius:999px;padding:5px 10px;font-size:.82rem;margin-bottom:10px}
+    .template{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 16px rgba(55,38,18,.08);margin:16px 0;overflow:hidden}
+    .template summary{cursor:pointer;list-style:none;padding:17px 20px;font-weight:850;color:var(--ink);background:linear-gradient(90deg,var(--paper-soft),#fff)}
+    .template summary::-webkit-details-marker{display:none}
+    .template summary:after{content:"öffnen";float:right;color:var(--magenta);font-weight:800;font-size:.85rem}
+    .template[open] summary:after{content:"schliessen"}
+    .template-body{padding:0 20px 20px}
+    .form-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 14px}
+    .form-meta div{background:var(--paper-soft);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.93rem}
+    .form-meta b{display:block;color:var(--magenta);margin-bottom:3px}
+    pre{white-space:pre-wrap;word-wrap:break-word;background:#fffaf0;border:1px dashed var(--magenta);border-radius:14px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.45;overflow-x:auto}
+    .checklist{background:#211f1c;color:#f7f0df;border-radius:var(--radius);padding:20px;border:6px solid #7a6348}
+    .checklist h3{color:#ff8fbf}
+    .quote{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,3vw,1.85rem);color:var(--magenta);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin:34px 0;text-align:center}
+    .links{display:grid;gap:12px;margin-top:12px}
+    .link-card{display:block;text-decoration:none;color:var(--ink);background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+    .link-card:hover,.link-card:focus{transform:translateY(-2px);border-color:var(--magenta);background:white;outline:none}
+    .link-card b{color:var(--magenta);display:block;margin-bottom:3px}
+    .warn{background:#fff5f2;border-color:#e7b5a7}
+    .good{background:#f4fbf4;border-color:#b8d8bd}
+    .small{color:var(--muted);font-size:.94rem}
+    .final-note{border-top:3px solid var(--magenta);margin-top:44px;padding-top:24px}
+    .final-note p{max-width:760px}
+    @media(max-width:760px){.page{padding:34px 20px 54px}header>div:first-child{padding-right:240px}.kacheln{top:0;right:0;grid-template-columns:repeat(6,30px);gap:6px}.kacheln img{width:30px;height:30px;border-radius:7px}.grid,.grid.two,.steps,.form-meta{grid-template-columns:1fr}.quick-nav{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}}
+    @media(max-width:520px){header>div:first-child{padding-right:0;padding-top:44px}.kacheln{left:0;right:auto;top:0;grid-template-columns:repeat(6,30px)}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <div class="meta">Kapitel 3 · Teil 3 · Schule und Bildungssystem</div>
+        <h1>Was ist schon normal?</h1>
+        <div class="subtitle">Hürden, Umwege und zweite Anläufe im Bildungsweg</div>
+      </div>
+      <div class="kacheln" aria-label="Funktionszeichen, nicht anklickbar">
+        <img src="data:image/webp;base64,UklGRhoFAABXRUJQVlA4IA4FAADwGgCdASpgAGAAPj0cjEOiIaGWO2y4IAPEoAwyyPE9+9fIBkz3QvEf+Q+4DtAeYB+m/TI8wH6zfqr6qvWAfzv+59aF6AH8A/nnpm+y5+z3/K9W3/76emoZmjusv3XhB2ov8BvT2MOID6l/4D0O/8BxrXiXqLfzz/helH80+iH5W9E7/mcB5+xQTv/qz2avXcXTdmrxpowTnJVm/P/3YIFjXm5hGqENBXXfARURqZaRsJA4tQsnts6McWWWS5FSEgPjLaxz0Pxw6EMoL8y5ywf+OIvYd8TudV8CbcRgIK2wAAD+/sFxfrj5C7EbFE5FtRwGUOkxnnUOtdaOPpQ3g0JMzACebQmJrRi8R4WI5o2OSoxHeRgj5qch4FBHYNGv+0e5GZrbG8uT9SDayVSW34Ehv/xpOLf/i9vwNU2UksY6Tq5dmTFqhDIhsqzLxhr9mniic7rsRAm8+pvX0vlmLjWrnqYfe52zIAA3i4r7TDyuCjkpJEAG+ds6NHQqcZ+hg/w+6akK99lB7PtYRFAOV+PHotVrLnkZNOdTMGyggCTPq4lNWegmhoddYArrb+u7X/h52XvR/R9fxGocwTsXljlTcU+2eHJ08zPRDn9jL3BBGOEttHfUyYWR+0B6PpAqRCv430cX1VpmBtvyjNdlx8HjrYH5xvRdvJKcsJf+uu0i54C20uHfBn6cGk0Ghuw6IN3s8j8/4C9TqUpvsXmiog3WbXSIPM65YFMJ3N9lyCJbbwxWGF8SbkvAuUY/RSLaoMbKKToPjwuQb7Zx2/T28CQM8Mukf3dDr/aA9KhrQPGeverVuVg1xyJ+IqzxzPzcVwy6jerLMChU0j+8zCi9YjgceX+hfXMlz4m9O5TECQ1n8SVhgaZ/it2m2LPaZcjDsNp+/P17O2tAx4tBujB/L5vn/YfXeJsbcEd2EWkQhJ5MdA1liRph/WbhKl7lZXjTBbiVB6KSRz1vu+cwu+xeX9TbJNj5tuR71J/sbClcymzJddm/A0tBubDW6V/9pYtc9Ia2AhP6spfg0Tpvzy9kU2UUX0X7f/5ZGIz8KfnAM2uSN9CBMKfh556pbkqvSAUoQDWJMe5xq1LUNvnUMtCBAF0oqa8gVmYbmSIIq1BHxeSdjPWv7ILISQd3gGwzU/7D4WUSU6ztGQQpEnwMAHvMHAgEi7hLyF0TXPtLPzTHE146iQnBhQsCsIjPBE3pNgIm9Ne9LKgt5lglBW4eQBBV+jCePcDC3MTdkWx7t33Z7NFBlUtbi+06BboXOyAgTh6B8gEEsycrBlmaHvRbPH3phQNqnEOmfbcJANVUQ9KzTzZqsFk22Md3DoLbs1BUP2sP9nHVAfXO/cuGh7nvKyJL6NbMB30rqeeWgcgbDL3Jqiq3g5cEuNabrY3SyI3mAEjRLhRbgy7+1aL2n9WGCbXxld4u+htTL2Lx8FRgEXCg1fLHeen+WbVkTuxOEKB+rZ+TGbsXLjZBP+qDNK9bUtH9i39RZDo6lnfR0tTIeudcRnCPF1ADLNI34fn+v6Fitlzwpn+6aMFoA7bPiTpbk07LkoL09w0xs7RufyGL6tTl8SuxNfYoRniig2dh/xE27CPwnRPXaxQytLPj+mjSk+rX7vHFePzOM7BeRB49SRJzR5H/cBA5Ip3iob40ODqpQhB9PN7oztp0/XeTIeQmsteKsEdDyQPttTi6KysAIvzcQyWeh0XPHc//ExTDq2yg7QAA" alt="Lebensordner">
+        <img src="data:image/webp;base64,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" alt="Online möglich">
+        <img src="data:image/webp;base64,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" alt="Vertiefung">
+        <img src="data:image/webp;base64,UklGRgoFAABXRUJQVlA4IP4EAABwGwCdASpgAGAAPj0ci0QiIaESvAW8IAPEtIAK5A6ovSbeUvXX9r97UzL/Tv73/OP2m/LfUQ/3X8reHi5d+xumW/mf96/NjmBqAH8v/rH/K9lD+O/3X9Q/uv7Yeyn8x/uP/J/snwCfyn+c/6r+6/u18Svrv/bH2TP10Ko/6XKRYSrGyiygaMummwov/h/D+GN/EUICqXCpE5Y/R0gAmsDQmN9dv8JcYuFGj3QnnpI3ImATdDMh9Z6pc6W2sfhhom4Wqtc6txxIdJlzlpLy2dpNnhnFla8/jZLQx/Mqe86d1azx4AAA/v6Xm7tmIsxraegeGUQ5jngM4Z7THSpVcAComq4qHb3ueJ3bKP7zhFinmVhAQkHdlLB8mmb3MubJqolq1QckDqTaw3s+zl8blV3WnkTOG1baL3rc+Xpxmn5sFhLgxv+B7Woc4M00ec+a56lStzGPq7v1cuieCU9ujoq6D6LYxSaIta1ronLM8lqYjMuZYjsMmdcH+0R8t8IVLDFFZ4TEPw0/IKIvrWr4o0eGYMzWWgJ6twguAHPS5INfBy1ZF2Y3aiNOjwvUWlPGTY9MSamVzEQ84eKDZ5BT8pN0h57zLW2iEpDfRQv20XdGyqRwwrvaGscOxPf3nKHesg9S/Pe0I5zqJgFCsAmmnMaydHraG+sZpMBXkNkxc3NCy7htzaQ+WTx4gIYANOeq+SFfwLrE9Vi5pU/mmuixY9cRCe1Bj92VPF+X+I08BdJnVZFXw6Hx8bHq/coPyT1p4mxEoaokYq4fAuJUMHROr6+3RzMyyidmFQRymVsSV/a5g1DTpAvynn1rn23sRL1eyNFVpTXDo+vazz/ies+8WtX1qrdDfkzkAKpCTKaqtd01mpELdQ4jxmOxuZqvaIFEw/5o1Jql685vDBl+/W5JGmWj26eQHjX7Y+zIqSunYD8LeBAsA4qoS8rk//30C96/KPoAfCuPA8HrNE+GVll/3raCYHnxj9t71m/vOGjSEzac4I2kN5H/JKguCjgRsOL+wdOmO+PONgf7OR127pDsfVtOMEqI/QUQTmV2rN6bXnmY6uS8uH6b+awiEc592Mnd3ql/x9TU3r8LyS36kY2Fk1e/bXHWps1pvD0AUKdnpic4D5tXgIph9TFVblti4irCQhWaYMUAECAVbXTys98SgqKBB+LHSaOi67EHm4HnoHCiHL+EOZVajBCVyZfAFS8iXsOT8VOM3GqdP+kx1+NTyOwK8NVbW5QQrFWlz+pZ5TQ3QBaZtyp+UyUfhFc5sjMs2/2II5WPFSf486syO/8B9qQHrf37P6ytlO+EDPtDyPA2v2ZACzPDQWP0WXoXmrfN/SQ/nMDJJR/ZLF8/p9VBXuwkhuwUCpBAHWid15KG0noq0BphOqP1fG2y1NiwWWtKZ79CPj2uyVI+sEVbqYn5ik6SsgKnMdZ0gfMdJUWW7nyBmtwrCpOpLbCoG7hSh/5I6aXiDdSGSMD9S1I4K7XUc24nD8nHtjKBwH6hcL7qoMVvV/ukHORyDmuV3/4Xa+6CETo2gXx6I3viOcxuqWvbyUDYn4c5W+z0LU0EpNr9LZ7H7v14PEnsuwZmN6jzqaAPPM8hIbYmo0DANmP6O4wp6FekzWC8HXusjdqSwRNy4k2i9HbNA0V+eZuYOItXkt7eeA1UeT9WpczNrJUjZI/VbxFj/G7FPcunCSVykFsAAAA=" alt="Kantonal unterschiedlich">
+        <img src="data:image/webp;base64,UklGRvwHAABXRUJQVlA4IPAHAACwIwCdASpgAGAAPj0cjEQiIaETLJWoIAPEsgBfAj4H9+X/B32crn7YGkk8qeLb1AeYBzgPMB+0/rJf2v1R+gB/af8N1hPoF+V5+2vwefuh+xftN3Qf8YOv+8n+2mgR/E/sZ+Y/qv0gc4PAC9Tf3Pfma5+gF6p/W/8v+ZH9k5yPql5pf+b42igB/J/7b6qv8v/3P7v+Uftf/Mf7X/z/8d8An8r/qX/E/vX7zfEX7BPRc/XssP/qz6GTdYO3kFIfqKdRBlDFU7C+FJ9IvKE6Z3eoKsRY21aguCZjB6KhAYu0Te6IMXj3Dcl6lVw3e8661Wt2ZlPhHh0zCnfufDRX6kRSPLV4VcR7Jwc5QVL1IBaQC6Lhcd3xyU3Z5eJExr6LZz6eJfcM0wAA/v+1JZShzDByhsPab22BAW86dYvLcCtKeFQR3y2TfgcFIJF6PvsRMzbJcx5r9aCJZnO4JGYTLqZVkDCE612qKecP/K50kXoLEfVyRHYw2/q/P3+AnML+mrtqc8aDznBN7yBVS3yr4xOL+zM/eROf3W5rtcdKCyejcbF0NP+cyIhEAaeXuqyRcYFKcVxNGVf3S4uTLlIwERZzvW9iHVVZVK0pqEdvnuhqSsJFoH3SFFlVBLR4LAcDp8Hh5s/fKTj1guhO+9PrTOOnXM2FwxmV19sgJncFhaDds7+S6X/+GuEQ90BHkDXcA0pebpZcy8JbjMdE1I9yMWirnnHD+s48jPg3AK8N37VvCIawq1psLRc+LloYs4scYoHqVbPsShPFsLz90DdZ3Vh80jiWuDT+cojUSm/wUKIzOe5KXf+qVEitz7OtchHmypO8Q4LE3CWFkGZ+jKpMDw+GRarDsM0K01zzZwNvP87bGDh0Ec/1UZPEvYfeWHTw/96DRWgRXBiUg9N2g6G6z70pliUvzJFuN7wTlTlKAV4MpyCBJ0aRD7+RG/QlBHmGpOqrEmiZIUNvw6cx0PuC/EU8SOW4ABhKezi8aAxDJ5dkeR3tuAcU4l2t8zqjDrpGb6cFLhO7cOEXMHhFtptlnxrDR/JslGIeJoZh+8OtIE+Lnr3U4PzK7QIS6TQEQQGiofpWI09B1PuaVi83P3Igjz9xX7eC8y/H1X/9uqPy9tWGl9RpS0ePAy7PblGXGrG93ShTUfRiYbOPoIu7TcHmvBqJVSYSlYHre+Z0dDUX5Js4bjrF4ROYq8mngDLSiXhbqsv867AP5MCJGtZrl1/yaa1iXvf8sCGlM0KZRWH7fNT/tNTiJZg+xcGdZaL2Ghldf6W2+x3PL6YEWWLfkvP6WjgeBgtCGwzTxpHhaRT/jVFKPiBddk7hNZUwvhSLTVREb5y2T/14nWn3YH50p2iYQCMMz/SKBl4/jOHAOTlpk7YwfaSig+Ye/b/dgmuGdVDG/+L//xVo/kOvBXMFQjCJf0cz8WQO9MnVpNtgWW2YF6a8AdjZrA/FFr+kI1eDwlymrqw9EUbo9UYMUvqJIfIXFv4ovhl0kUF39bwkdY6XquorXv70WFYrnjy2Q/iRFavgxfPevvLrXid4mIulmiBZ7ujUztGdnA+jra9e+8QHz9rUvMEYrVUQp08h/8ylyt6aYl1/s9Jb0r/ThUN4nOayXEVb91ZUkUM8P/icywxGVPCYvvLb92AzWXbrj1MIM7k9UZoC/1K9Eviki4N8e3QD3w+DmQ7iTR54xbXPk6ajlkpx+1kvA5t9Yv/5Wc5JaSDsAZtrUnPHkrVhy/pe1grJWmMi186t+g1tqPv/DvX81yz/y1NsPV4cVKwF46bhzrIi3z9QU/7zU6bHoMuvUsL/zGIYQ8bGWzo1crV5d8qH0NwPRrDWjgIuejmrIHWf9HwHS0naiLXnEgCkWWFKSKm7adoevZF9mdH6WoGqdqOMdUtQp/0UipbfK5CjIIED1FgrT3sjpNSOrwQ1HNKk2/dYzBUbyQH3R+GSir28PL7kdRdJQ1yjxlWH+X5D5XE44G7DI2CL97kktF8EzY6lV7+GhTU8yz/4/NHz+Lz3ybT0m+9ygsCxBQSJgOs4REg2TUDTyrORT/cSI1r4bRCCFWvkqYnY8GorLoTgfhZiigwwb+9yHdUpi4mXuIXEiAsPZuNwOGGBxb/yRcrb7cG6Gs7uQAxSYAcChZ1tOZb1XqUgLmX9G68/3gMa68BillA6dACaBrN5eEXn6R5sAUNvADtHpVsaIz5n0DkqQQ90B3n7lDCsANvWyTQpDzJYZ0LxGpnH2xq0+l5P7HHPsSprTo67r2zPpGh4/PsmvvyJbTFMPJiCPNM9+tK19YmxCBBihU6ouE5NW16MXperTosCKb1AddqAyJFIfVAMXHuqjh9bymO/8jq+oW5CyyKyX6wERg0K0NJnyuf9iWVfoYqlfAhccQHdA9zC4Pt/sWfV+9VMUDbFnfTXwWSkU/qEz1hhYmiQLxeGHWvbgmXgfrKN/B7WtHNSD2bLcKsjBNApn6PnCnly/ykM2EYI0kIMzeVgb0gANC+im9q5zdGZVSQUtFvlWOOOq5GThGEp1z6bYQfc1MRH27N5nacLNglU2BJ2k7TxNsnIFOWgFZCXB1uCKXXtwAeW+h3qgHzJP0etB/xG2dF/CFr/Bjo5Q2/ZoI0PByf+7tuY/3OXYdqf/3eB2qusNOp4Oz8ID0ITFIDm2bRl6puomQDWjlpunp03b9s+cgaZSpu7S98iYSydufhN0xv1YAAA" alt="Selber nachprüfen">
+        <img src="data:image/webp;base64,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" alt="Lass dich beraten">
+      </div>
+    </header>
+
+    <p class="lead">Nicht jeder Bildungsweg läuft geradeaus. Manche brauchen Unterstützung, manche mehr Zeit, manche einen zweiten Anlauf. <strong>Diese Seite zeigt nicht nur, woran du denken musst. Sie gibt dir Mustertexte, mit denen du den Papierweg beginnen kannst.</strong></p>
+
+    <div class="toc-note"><p>Der Kern ist Bürokratie zum Anwenden: Gespräch verlangen, Warnung zur gefährdeten Promotion schriftlich klären, Abklärung anstossen, Nachteilsausgleich beantragen, Schulwechsel oder Auslandsjahr schriftlich klären, Protokoll sichern und Unterlagen sauber ablegen. Formulierungen bitte an Kanton, Schule und Situation anpassen.</p></div>
+
+    <nav class="quick-nav" aria-label="Seitennavigation">
+      <a href="#papierweg">Papierweg</a><a href="#musterbriefe">Musterbriefe</a><a href="#nachteilsausgleich">Nachteilsausgleich</a><a href="#promotion">Promotion gefährdet</a><a href="#schulweg">Schulweg ändern</a><a href="#auslandsjahr">Auslandsjahr</a><a href="#protokoll">Protokoll & KI</a><a href="#ablage">Ablage</a><a href="#links">Links</a>
+    </nav>
+
+    <section class="path" id="papierweg" aria-labelledby="papierweg-title">
+      <h2 id="papierweg-title">Der Papierweg, wenn Schule nicht geradeaus läuft</h2>
+      <div class="steps">
+        <div class="step"><strong>Beobachten</strong><span>Was fällt auf? Seit wann? Mit welchen Beispielen?</span></div>
+        <div class="step"><strong>Gespräch</strong><span>Termin verlangen und Fragen vorher schriftlich sammeln.</span></div>
+        <div class="step"><strong>Gesuch</strong><span>Abklärung, Unterstützung, Nachteilsausgleich oder Schulwechsel beantragen.</span></div>
+        <div class="step"><strong>Entscheid</strong><span>Massnahmen, Zuständigkeit und Fristen schriftlich bestätigen lassen.</span></div>
+        <div class="step"><strong>Ablage</strong><span>Berichte, Mails, Entscheide, Zeugnisse und Nachweise sichern.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="musterbriefe" aria-labelledby="musterbriefe-title">
+      <div class="section-title"><div class="section-number">1</div><h2 id="musterbriefe-title">Musterbriefe für den ersten Schritt</h2></div>
+      <div class="grid three">
+        <div class="card"><span class="badge">Gespräch</span><h3>Wenn etwas auffällt</h3><p>Erst schriftlich einen Termin verlangen. Nicht mit Vorwürfen starten, sondern mit Beobachtungen und Fragen.</p></div>
+        <div class="card"><span class="badge">Abklärung</span><h3>Wenn es ein Muster gibt</h3><p>Bei wiederkehrenden Schwierigkeiten klären, welche Fachstelle zuständig ist und welche Unterlagen nötig sind.</p></div>
+        <div class="card"><span class="badge">Bestätigung</span><h3>Nach dem Gespräch</h3><p>Immer kurz zusammenfassen. Das ist kein Misstrauen, sondern saubere Administration.</p></div>
+      </div>
+
+      <details class="template" open><summary>Musterbrief: Gespräch mit der Schule verlangen</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Klassenlehrperson, bei Bedarf Schulleitung</div><div><b>Beilagen?</b>Keine nötig, Beispiele bereithalten</div><div><b>Ziel</b>Situation klären und nächsten Schritt festlegen</div></div>
+<pre>Betreff: Bitte um Gespräch zum aktuellen Schulverlauf von [Name]
+
+Guten Tag [Name]
+
+Ich möchte gerne ein Gespräch zum aktuellen Schulverlauf von [Name des Kindes], Klasse [Klasse], vereinbaren.
+
+Uns ist aufgefallen, dass [kurz beschreiben: Lesen, Schreiben, Rechnen, Konzentration, Prüfungen, Belastung, Konflikte oder häufige Rückmeldungen]. Wir möchten besser verstehen, wie die Schule die Situation einschätzt und welche nächsten Schritte sinnvoll sind.
+
+Für das Gespräch wären uns folgende Punkte wichtig:
+
+1. Wie beurteilt die Schule die aktuelle Situation?
+2. Welche Unterstützung wurde bereits versucht?
+3. Welche weiteren Möglichkeiten bestehen?
+4. Braucht es eine Abklärung oder ein formelles Gesuch?
+5. Wer ist für den nächsten Schritt zuständig?
+
+Bitte teilen Sie uns zwei bis drei mögliche Termine mit.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <details class="template"><summary>Musterbrief: Fachliche Abklärung prüfen lassen</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Lehrperson oder Schulleitung</div><div><b>Beilagen?</b>Tests, Hefte, Zeugnisse, Notizen</div><div><b>Ziel</b>Zuständigkeit und Verfahren klären</div></div>
+<pre>Betreff: Bitte um Prüfung einer fachlichen Abklärung für [Name]
+
+Guten Tag [Name]
+
+Wir bitten darum, zu prüfen, ob für [Name des Kindes], Klasse [Klasse], eine fachliche Abklärung sinnvoll ist.
+
+Grund dafür sind wiederkehrende Schwierigkeiten in folgenden Bereichen:
+
+- [Lesen / Schreiben]
+- [Rechnen]
+- [Sprechen / Sprache]
+- [Konzentration / Aufmerksamkeit]
+- [andere Beobachtung]
+
+Die Schwierigkeiten bestehen seit [Zeitraum] und zeigen sich besonders bei [kurz beschreiben].
+
+Wir möchten klären:
+
+1. Welche Unterstützung im Unterricht bereits möglich ist.
+2. Ob eine schulische Fördermassnahme ausreicht.
+3. Ob eine Abklärung durch eine Fachstelle angezeigt ist.
+4. Welche Stelle zuständig ist.
+5. Welche Unterlagen dafür benötigt werden.
+
+Bitte teilen Sie uns mit, wie das Vorgehen in unserer Schule beziehungsweise in unserer Gemeinde geregelt ist.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <details class="template"><summary>Musterbrief: Gespräch schriftlich zusammenfassen</summary><div class="template-body">
+        <div class="form-meta"><div><b>Wann?</b>Am gleichen oder nächsten Tag</div><div><b>Beilagen?</b>Nur falls vereinbart</div><div><b>Ziel</b>Missverständnisse vermeiden</div></div>
+<pre>Betreff: Zusammenfassung unseres Gesprächs vom [Datum]
+
+Guten Tag [Name]
+
+Besten Dank für das Gespräch vom [Datum].
+
+Damit wir den Stand sauber festhalten, fasse ich die wichtigsten Punkte kurz zusammen.
+
+Besprochen wurde:
+
+1. [Punkt 1]
+2. [Punkt 2]
+3. [Punkt 3]
+
+Vereinbart wurde:
+
+1. [Massnahme / nächster Schritt]
+2. [zuständige Person]
+3. [Frist oder nächster Termin]
+
+Offen geblieben sind aus meiner Sicht:
+
+1. [offene Frage]
+2. [offene Frage]
+
+Falls ich etwas missverstanden oder unvollständig festgehalten habe, bitte ich um kurze Korrektur.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+    </section>
+
+    <section class="section" id="nachteilsausgleich" aria-labelledby="nta-title">
+      <div class="section-title"><div class="section-number">2</div><h2 id="nta-title">Nachteilsausgleich beantragen</h2></div>
+      <div class="grid two">
+        <div class="card good"><h3>Worum es geht</h3><p>Ein Nachteilsausgleich soll die Bedingungen anpassen, nicht die Lernziele verschwinden lassen. Es geht um faire Rahmenbedingungen, damit Leistung überhaupt sichtbar werden kann.</p></div>
+        <div class="card"><h3>Typische Massnahmen</h3><ul><li>mehr Zeit bei Prüfungen</li><li>ruhiger Raum</li><li>Computer oder Hilfsmittel</li><li>Aufgaben vorlesen</li><li>mündliche statt schriftliche Form</li><li>angepasste Darstellung von Aufgaben</li></ul></div>
+      </div>
+
+      <details class="template" open><summary>Musterantrag: Nachteilsausgleich</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Schulleitung oder zuständige Stelle</div><div><b>Beilagen?</b>Fachbericht, Schulbericht, frühere Entscheide</div><div><b>Ziel</b>Prüfung und schriftlicher Entscheid</div></div>
+<pre>Betreff: Antrag auf Nachteilsausgleich für [Name]
+
+Guten Tag [Name / Schulleitung]
+
+Hiermit beantragen wir für [Name], Klasse [Klasse], einen Nachteilsausgleich.
+
+Grund des Antrags ist [kurz benennen: zum Beispiel Legasthenie, Dyskalkulie, ADHS, motorische Einschränkung, Seh- oder Hörbeeinträchtigung oder eine andere fachlich abgeklärte Einschränkung].
+
+Die Schwierigkeit zeigt sich insbesondere bei:
+
+1. [Bereich, zum Beispiel schriftliche Prüfungen]
+2. [Bereich, zum Beispiel Lesen von Aufgabenstellungen]
+3. [Bereich, zum Beispiel Zeitdruck]
+4. [Bereich, zum Beispiel Konzentration oder Rechenabläufe]
+
+Wir beantragen folgende Massnahmen zur Prüfung:
+
+1. [zum Beispiel Zeitzuschlag]
+2. [zum Beispiel separater Prüfungsraum]
+3. [zum Beispiel Aufgaben vorlesen]
+4. [zum Beispiel Computer / Hilfsmittel]
+5. [zum Beispiel mündliche statt schriftliche Prüfung]
+
+Uns ist bewusst, dass ein Nachteilsausgleich die Lernziele nicht ersetzt. Es geht darum, die Rahmenbedingungen so anzupassen, dass [Name] die geforderten Leistungen fair zeigen kann.
+
+Als Beilage reichen wir ein:
+
+- [Fachbericht / Abklärung]
+- [Schulbericht]
+- [weitere Unterlagen]
+
+Wir bitten um Prüfung des Antrags und um eine schriftliche Rückmeldung zum weiteren Vorgehen.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <div class="checklist"><h3>Vor dem Antrag prüfen</h3><ul><li>Ist klar, welche Schwierigkeit ausgeglichen werden soll?</li><li>Gibt es einen aktuellen Fachbericht oder Schulbericht?</li><li>Sind die gewünschten Massnahmen konkret formuliert?</li><li>Ist klar, wer entscheidet?</li><li>Wird der Entscheid schriftlich festgehalten?</li></ul></div>
+    </section>
+
+    <section class="section" id="schulweg" aria-labelledby="schulweg-title">
+      <div class="section-title"><div class="section-number">3</div><h2 id="schulweg-title">Wenn Promotion gefährdet ist oder der Schulweg geändert werden soll</h2></div>
+
+      <div class="card warn" id="promotion">
+        <h3>Eine Wiederholung kommt selten aus dem Nichts</h3>
+        <p>Wenn die Promotion oder Versetzung gefährdet ist, gibt es meistens vorher Warnzeichen: schlechte Prüfungen, Rückmeldungen der Lehrperson, ein Zwischenzeugnis, einen Lernbericht oder ein Gespräch mit dem Hinweis, dass es knapp werden könnte.</p>
+        <p>Genau dann beginnt der Papierweg. Wer erst beim definitiven Entscheid reagiert, ist spät dran. Besser ist: früh schriftlich klären, was gefährdet ist, welche Regeln gelten, welche Unterstützung möglich ist und bis wann sich etwas verbessern muss.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card"><h3>Promotion gefährdet</h3><p>Jetzt zählen nicht nur die Noten, sondern auch Fristen, Massnahmen, Zuständigkeiten und die schriftliche Dokumentation der Warnung.</p></div>
+        <div class="card"><h3>Wiederholen</h3><p>Schlechte Noten haben Gewicht. Trotzdem braucht ein Wiederholungsentscheid Begründung, Zuständigkeit, Frist und Ablage.</p></div>
+        <div class="card"><h3>Freiwillige Wiederholung</h3><p>Manche Familien beantragen sie bewusst: bei Krankheit, Krise, Schulwechsel, Überforderung oder wenn ein zweiter Anlauf den weiteren Weg stabiler macht.</p></div>
+        <div class="card"><h3>Überspringen</h3><p>Hier braucht es meist eine klare Einschätzung der Schule und eine Regelung, wie der Übergang begleitet wird.</p></div>
+        <div class="card"><h3>Schulwechsel</h3><p>Bei Schulwechseln zählen Fristen, Zuständigkeiten, Unterlagen und die Frage, wer die Kosten trägt.</p></div>
+        <div class="card"><h3>Entscheid prüfen</h3><p>Ein Widerspruch ist schwieriger, wenn es vorher klare Warnungen gab. Aber auch dann darf man die Entscheidgrundlagen und Fristen schriftlich verlangen.</p></div>
+      </div>
+
+      <details class="template" open><summary>Musterbrief: Wenn die Promotion gefährdet ist</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Klassenlehrperson, bei Bedarf Schulleitung</div><div><b>Beilagen?</b>Zeugnisse, Lernberichte, eigene Notizen</div><div><b>Ziel</b>Früh klären, was gefährdet ist und was bis wann passieren muss</div></div>
+<pre>Betreff: Klärung der gefährdeten Promotion von [Name]
+
+Guten Tag [Name]
+
+Wir haben zur Kenntnis genommen, dass die Promotion / Versetzung / der Übertritt von [Name des Kindes], Klasse [Klasse], gefährdet ist.
+
+Wir möchten die Situation frühzeitig klären und bitten um ein Gespräch.
+
+Für uns sind folgende Punkte wichtig:
+
+1. In welchen Fächern oder Bereichen besteht aktuell das Hauptproblem?
+2. Welche Promotionsregeln sind in dieser Situation massgebend?
+3. Welche Leistungen müssten sich bis wann verbessern?
+4. Welche Unterstützung ist seitens Schule möglich?
+5. Was kann [Name] selbst konkret tun?
+6. Was können wir als Eltern unterstützen?
+7. Wann wird der nächste Zwischenstand besprochen?
+8. Welche Folgen hätte es, wenn die Promotion nicht erreicht wird?
+
+Wir bitten darum, die wichtigsten Punkte und vereinbarten Massnahmen schriftlich festzuhalten, damit alle Beteiligten denselben Stand haben.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <details class="template"><summary>Musterbrief: Entscheid zur Wiederholung prüfen lassen</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Schulleitung / zuständige Schulbehörde</div><div><b>Beilagen?</b>Zeugnisse, Lernberichte, Abklärungen, Gesprächsnotizen</div><div><b>Ziel</b>Entscheidgrundlagen, Fristen und Rechtsmittel klären</div></div>
+<pre>Betreff: Bitte um schriftliche Begründung und Gespräch zum Entscheid betreffend Wiederholung des Schuljahres
+
+Guten Tag [Name]
+
+Wir haben zur Kenntnis genommen, dass bei [Name des Kindes], Klasse [Klasse], eine Wiederholung des Schuljahres im Raum steht / beschlossen wurde.
+
+Wir bitten um ein Gespräch und um eine schriftliche Klärung der Entscheidgrundlagen.
+
+Für uns sind insbesondere folgende Punkte wichtig:
+
+1. Welche Promotionsregeln wurden angewendet?
+2. Welche Noten, Lernberichte oder Beobachtungen waren ausschlaggebend?
+3. Wurden besondere Umstände berücksichtigt, zum Beispiel Krankheit, Belastung, Schulwechsel, Sprache, Abklärungen oder Nachteilsausgleich?
+4. Welche Unterstützung wurde bereits versucht?
+5. Welche Alternativen wurden geprüft?
+6. Wer trifft den formellen Entscheid?
+7. Welche Frist gilt, falls wir den Entscheid überprüfen lassen möchten?
+
+Uns ist bewusst, dass die schulischen Leistungen eine wichtige Grundlage sind. Wir möchten jedoch sicherstellen, dass der Entscheid vollständig, nachvollziehbar und im Interesse von [Name] getroffen wird.
+
+Bitte bestätigen Sie uns kurz, wie das weitere Vorgehen aussieht.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <details class="template"><summary>Musterantrag: Freiwillige Wiederholung des Schuljahres</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Schulleitung / zuständige Schulbehörde</div><div><b>Beilagen?</b>Zeugnisse, Berichte, Bestätigungen, Gesprächsnotizen</div><div><b>Ziel</b>Bewilligung prüfen und Wiederholungsjahr planen</div></div>
+<pre>Betreff: Gesuch um freiwillige Wiederholung des Schuljahres
+
+Guten Tag [Name / Schulleitung]
+
+Wir beantragen für [Name des Kindes], Klasse [Klasse], die freiwillige Wiederholung des Schuljahres.
+
+Aus unserer Sicht wäre ein zweiter Durchgang sinnvoll, weil [kurz begründen: längere Krankheit, Überforderung, grosser Stoffrückstand, Schulwechsel, familiäre Belastung, sprachliche Schwierigkeiten oder fehlende Stabilität].
+
+Wir sehen die Wiederholung nicht als Strafe, sondern als Möglichkeit, den weiteren Schulweg tragfähiger zu gestalten.
+
+Wir bitten um Prüfung folgender Punkte:
+
+1. Ist eine freiwillige Wiederholung in dieser Situation möglich?
+2. Wer entscheidet darüber?
+3. Welche Unterlagen oder Begründungen werden benötigt?
+4. Welche Folgen hat die Wiederholung für den weiteren Schulweg?
+5. Welche Unterstützung kann im Wiederholungsjahr vereinbart werden?
+
+Als Beilage reichen wir ein:
+
+- [Zeugnisse / Lernberichte]
+- [ärztliche Bestätigung, falls relevant]
+- [Fachbericht / Abklärung, falls vorhanden]
+- [Gesprächsnotizen / weitere Unterlagen]
+
+Wir bitten um eine schriftliche Rückmeldung zum weiteren Vorgehen.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+
+      <details class="template"><summary>Musterantrag: Überspringen, Schulwechsel oder andere Einstufung prüfen</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Schulleitung / zuständige Schulbehörde</div><div><b>Beilagen?</b>Zeugnisse, Berichte, Gesprächsnotizen</div><div><b>Ziel</b>Formelles Vorgehen klären</div></div>
+<pre>Betreff: Bitte um Prüfung des weiteren Schulwegs von [Name]
+
+Guten Tag [Name]
+
+Wir bitten um Prüfung des weiteren Schulwegs von [Name], Klasse [Klasse].
+
+Konkret möchten wir klären, ob [Überspringen / Schulwechsel / andere Einstufung] sinnvoll und möglich ist.
+
+Aus unserer Sicht sprechen folgende Punkte für eine Prüfung:
+
+1. [Beobachtung / Entwicklung]
+2. [schulische Rückmeldung]
+3. [Belastung / Förderung / Unterforderung]
+4. [weiterer Grund]
+
+Wir bitten um Auskunft zu folgenden Fragen:
+
+1. Wer ist für den Entscheid zuständig?
+2. Welche Unterlagen müssen eingereicht werden?
+3. Welche Fristen gelten?
+4. Wird eine Empfehlung der Lehrperson oder eine Abklärung benötigt?
+5. Wie wird der Entscheid schriftlich festgehalten?
+
+Bitte teilen Sie uns mit, wie das weitere Vorgehen aussieht.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+    </section>
+
+    <section class="section" id="auslandsjahr" aria-labelledby="auslandsjahr-title">
+      <div class="section-title"><div class="section-number">4</div><h2 id="auslandsjahr-title">Auslandsjahr oder längerer Unterbruch</h2></div>
+      <div class="card"><p>Ein Auslandsjahr gehört hier nur so weit hinein, wie es den Bildungsweg und die Unterlagen betrifft. Entscheidend sind Beurlaubung, Anerkennung, Rückkehr, Fristen und Nachweise. Visa und Landesregeln gehören in eine eigene Vertiefung, nicht auf diese Grundseite.</p></div>
+
+      <details class="template" open><summary>Musterantrag: Beurlaubung / Auslandsjahr</summary><div class="template-body">
+        <div class="form-meta"><div><b>An wen?</b>Schulleitung</div><div><b>Beilagen?</b>Programm, Gastschule, Bestätigung</div><div><b>Ziel</b>Beurlaubung und Rückkehr schriftlich klären</div></div>
+<pre>Betreff: Gesuch um Beurlaubung für ein Auslandsjahr von [Name]
+
+Guten Tag [Name / Schulleitung]
+
+Wir beantragen für [Name], Klasse [Klasse], eine Beurlaubung für ein Auslandsjahr vom [Datum] bis [Datum].
+
+Geplant ist ein Schulbesuch an [Name der Schule / Organisation / Land], soweit bereits bekannt.
+
+Wir bitten um Klärung folgender Punkte:
+
+1. Welche Unterlagen braucht die Schule für das Gesuch?
+2. Wie werden Leistungen aus dem Ausland beurteilt oder anerkannt?
+3. In welche Klasse kehrt [Name] voraussichtlich zurück?
+4. Welche Fächer oder Nachweise sind für die Rückkehr besonders wichtig?
+5. Gibt es Fristen, die wir einhalten müssen?
+
+Als Beilage reichen wir ein:
+
+- [Anmeldebestätigung, falls vorhanden]
+- [Informationen zur Gastschule]
+- [Programmangaben]
+- [weitere Unterlagen]
+
+Wir bitten um schriftliche Rückmeldung zum weiteren Vorgehen.
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+    </section>
+
+    <section class="section" id="protokoll" aria-labelledby="protokoll-title">
+      <div class="section-title"><div class="section-number">5</div><h2 id="protokoll-title">Gespräche, Protokolle und KI</h2></div>
+      <div class="grid two"><div class="card warn"><h3>Nicht heimlich aufnehmen</h3><p>Schulgespräche können sensible Daten enthalten. Eine Tonaufnahme oder ein KI-Protokoll ist nur sauber, wenn die Regeln klar sind und alle nötigen Personen zustimmen. Der sicherere Weg: eigene Notizen und danach eine schriftliche Zusammenfassung zur Korrektur senden.</p></div><div class="card"><h3>KI nur bewusst einsetzen</h3><p>Wenn ein Tool Gespräche transkribiert, stellt sich sofort die Frage, wo die Daten verarbeitet werden. Ohne klare Zustimmung und ohne sauberen Datenschutz: nicht verwenden.</p></div></div>
+
+      <details class="template" open><summary>Muster: Protokoll nach einem Schulgespräch</summary><div class="template-body">
+<pre>Betreff: Protokoll / Zusammenfassung Gespräch vom [Datum]
+
+Guten Tag [Name]
+
+Besten Dank für das Gespräch vom [Datum].
+
+Ich halte die wichtigsten Punkte wie folgt fest:
+
+Anwesend waren:
+- [Name / Funktion]
+- [Name / Funktion]
+
+Besprochen wurde:
+1. [Thema]
+2. [Thema]
+3. [Thema]
+
+Vereinbart wurde:
+1. [Massnahme]
+2. [zuständige Person]
+3. [Frist]
+4. [nächster Termin]
+
+Noch offen ist:
+1. [offene Frage]
+2. [offene Frage]
+
+Falls etwas fehlt oder nicht korrekt festgehalten ist, bitte ich um kurze Rückmeldung bis [Datum].
+
+Freundliche Grüsse
+[Name]</pre></div></details>
+    </section>
+
+    <section class="section" id="ablage" aria-labelledby="ablage-title">
+      <div class="section-title"><div class="section-number">6</div><h2 id="ablage-title">Was gehört in den Lebensordner?</h2></div>
+      <div class="grid">
+        <div class="card"><h3>Schule</h3><ul><li>Zeugnisse</li><li>Schulberichte</li><li>Standortgespräche</li><li>Gesprächsnotizen</li><li>Protokolle</li></ul></div>
+        <div class="card"><h3>Abklärung und Unterstützung</h3><ul><li>Fachberichte</li><li>Abklärungen</li><li>Förderpläne</li><li>Gesuche</li><li>Entscheide</li></ul></div>
+        <div class="card"><h3>Übergänge</h3><ul><li>Anmeldungen</li><li>Bestätigungen</li><li>Verträge</li><li>Praktikumsnachweise</li><li>Anerkennungen</li></ul></div>
+      </div>
+    </section>
+
+    <div class="quote">Ein Zeugnis bleibt ein Dokument. Aber es entscheidet nicht für immer über deinen Weg. Wichtig ist, was du danach nachweisen kannst.</div>
+
+    <section class="section" id="links" aria-labelledby="links-title">
+      <div class="section-title"><div class="section-number">7</div><h2 id="links-title">Nützliche Stellen und Links</h2></div>
+      <div class="links">
+        <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/2800" target="_blank" rel="noopener"><b>berufsberatung.ch: Schweizer Bildungssystem</b>Überblick über Bildungswege und Abschlüsse.</a>
+        <a class="link-card" href="https://www.sbfi.admin.ch/de/nachteilsausgleich" target="_blank" rel="noopener"><b>SBFI: Nachteilsausgleich</b>Hinweise zum Nachteilsausgleich bei Prüfungen.</a>
+        <a class="link-card" href="https://www.edk.ch/de/bildungssystem-ch/sonderpaedagogik-1" target="_blank" rel="noopener"><b>EDK: Sonderpädagogik</b>Überblick zur sonderpädagogischen Unterstützung.</a>
+        <a class="link-card" href="https://www.verband-dyslexie.ch/Nachteilsausgleich.html" target="_blank" rel="noopener"><b>Verband Dyslexie Schweiz</b>Informationen zu Dyslexie, Dyskalkulie und Nachteilsausgleich.</a>
+        <a class="link-card" href="https://www.edoeb.admin.ch/de/aufzeichnung-von-gespraechen" target="_blank" rel="noopener"><b>EDÖB: Gesprächsaufzeichnungen</b>Hinweise zum Datenschutz bei Aufzeichnungen.</a>
+        <a class="link-card" href="https://www.recognition.swiss/de" target="_blank" rel="noopener"><b>recognition.swiss</b>Abklärung, ob eine Anerkennung ausländischer Berufsqualifikationen nötig ist.</a>
+      </div>
+    </section>
+
+    <div class="final-note"><h2>Scannen, kopieren, anpassen</h2><p>Die Mustertexte sind keine Rechtsberatung. Sie helfen, die nächste Mail oder das nächste Gesuch sauber aufzusetzen. Zuständigkeiten, Fristen und Formulare sind je nach Kanton, Gemeinde und Schule unterschiedlich.</p></div>
+  </main>
+</body>
+</html>
