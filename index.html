@@ -27,6 +27,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: #e9dfca;
@@ -82,6 +86,7 @@
       font-size: clamp(1.35rem, 3vw, 2.1rem);
       margin-top: 10px;
       font-weight: 700;
+      max-width: 780px;
     }
 
     .kacheln {
@@ -90,7 +95,7 @@
       justify-content: flex-end;
       align-items: center;
       flex-wrap: wrap;
-      max-width: 290px;
+      max-width: 310px;
     }
 
     .kacheln img {
@@ -117,7 +122,7 @@
       padding: 18px 20px;
       border-radius: 0 var(--radius) var(--radius) 0;
       box-shadow: var(--shadow);
-      margin: 26px 0 34px;
+      margin: 26px 0 22px;
       max-width: 860px;
     }
 
@@ -126,8 +131,48 @@
       font-size: 1.05rem;
     }
 
+    .quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 14px 0 18px;
+      margin: 8px 0 34px;
+      background: linear-gradient(
+        180deg,
+        var(--paper) 0%,
+        rgba(247, 240, 223, .96) 72%,
+        rgba(247, 240, 223, 0) 100%
+      );
+      scrollbar-width: thin;
+    }
+
+    .quick-nav a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: .94rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(55, 38, 18, .08);
+    }
+
+    .quick-nav a:hover,
+    .quick-nav a:focus {
+      color: white;
+      background: var(--magenta);
+      border-color: var(--magenta);
+      outline: none;
+    }
+
     .section {
       margin: 34px 0;
+      scroll-margin-top: 92px;
     }
 
     .section-title {
@@ -203,6 +248,7 @@
       margin: 28px 0 36px;
       box-shadow: var(--shadow);
       border: 8px solid #7a6348;
+      scroll-margin-top: 92px;
     }
 
     .path h2 {
@@ -333,6 +379,10 @@
     }
 
     @media (max-width: 760px) {
+      .page {
+        padding: 34px 20px 54px;
+      }
+
       header {
         grid-template-columns: 1fr;
       }
@@ -356,6 +406,13 @@
         width: 112px;
         height: 112px;
       }
+
+      .quick-nav {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
 
     @media print {
@@ -367,6 +424,13 @@
         max-width: none;
         padding: 24mm;
         background: var(--paper);
+      }
+
+      .quick-nav {
+        position: static;
+        flex-wrap: wrap;
+        overflow: visible;
+        background: transparent;
       }
 
       .link-card {
@@ -391,8 +455,11 @@
         <div class="subtitle">Hürden, Umwege und zweite Anläufe im Bildungsweg</div>
       </div>
 
+      <!--
+      ORIGINALKACHELN NUR AKTIVIEREN, WENN DIE DATEIEN WIRKLICH VORLIEGEN.
+      Keine KI-Icons. Keine Ersatzsymbole. Keine Platzhalter.
+
       <div class="kacheln" aria-label="Funktionszeichen">
-        <!-- Nur Originalkacheln einsetzen. Keine KI-Icons, keine Ersatzsymbole. -->
         <img src="assets/kachel_vertiefung_original.png" alt="Vertiefung">
         <img src="assets/kachel_online_original.png" alt="Online möglich">
         <img src="assets/kachel_lebensordner_original.png" alt="Lebensordner">
@@ -400,6 +467,7 @@
         <img src="assets/kachel_nachpruefen_original.png" alt="Selber nachprüfen">
         <img src="assets/kachel_beratung_original.png" alt="Lass dich beraten">
       </div>
+      -->
     </header>
 
     <p class="lead">
@@ -417,8 +485,19 @@
       </p>
     </div>
 
-    <section class="path" aria-labelledby="papierweg">
-      <h2 id="papierweg">Der Papierweg, wenn Schule nicht geradeaus läuft</h2>
+    <nav class="quick-nav" aria-label="Seitennavigation">
+      <a href="#papierweg">Papierweg</a>
+      <a href="#sortieren">Erst sortieren</a>
+      <a href="#unterstuetzung">Unterstützung</a>
+      <a href="#weg-anders">Schulweg anders</a>
+      <a href="#holpert">Wenn es holpert</a>
+      <a href="#protokoll">Protokoll & KI</a>
+      <a href="#offen">Wege bleiben offen</a>
+      <a href="#ablage">Ablage</a>
+    </nav>
+
+    <section class="path" id="papierweg" aria-labelledby="papierweg-title">
+      <h2 id="papierweg-title">Der Papierweg, wenn Schule nicht geradeaus läuft</h2>
       <div class="steps">
         <div class="step">
           <strong>Auffallen</strong>
@@ -443,10 +522,10 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="sortieren">
+    <section class="section" id="sortieren" aria-labelledby="sortieren-title">
       <div class="section-title">
         <div class="section-number">1</div>
-        <h2 id="sortieren">Erst sortieren: Was ist eigentlich los?</h2>
+        <h2 id="sortieren-title">Erst sortieren: Was ist eigentlich los?</h2>
       </div>
 
       <div class="grid two">
@@ -476,10 +555,10 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="unterstuetzung">
+    <section class="section" id="unterstuetzung" aria-labelledby="unterstuetzung-title">
       <div class="section-title">
         <div class="section-number">2</div>
-        <h2 id="unterstuetzung">Wenn Lernen Unterstützung braucht</h2>
+        <h2 id="unterstuetzung-title">Wenn Lernen Unterstützung braucht</h2>
       </div>
 
       <div class="grid">
@@ -523,10 +602,12 @@
           <b>SBFI: Nachteilsausgleich bei Prüfungen</b>
           Offizielle Erklärung zu Ziel und Grenzen des Nachteilsausgleichs.
         </a>
+
         <a class="link-card" href="https://www.edk.ch/de/bildungssystem-ch/sonderpaedagogik-1" target="_blank" rel="noopener">
           <b>EDK: Sonderpädagogik</b>
           Überblick zur Unterstützung von Kindern und Jugendlichen mit besonderem Bildungsbedarf.
         </a>
+
         <a class="link-card" href="https://www.verband-dyslexie.ch/Nachteilsausgleich.html" target="_blank" rel="noopener">
           <b>Verband Dyslexie Schweiz: Nachteilsausgleich</b>
           Informationen zu Legasthenie, Dyskalkulie und möglichen Anpassungen.
@@ -534,10 +615,10 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="weg-anders">
+    <section class="section" id="weg-anders" aria-labelledby="weg-anders-title">
       <div class="section-title">
         <div class="section-number">3</div>
-        <h2 id="weg-anders">Wenn der Schulweg anders verläuft</h2>
+        <h2 id="weg-anders-title">Wenn der Schulweg anders verläuft</h2>
       </div>
 
       <div class="grid">
@@ -580,14 +661,17 @@
           <b>berufsberatung.ch: Schweizer Bildungssystem</b>
           Übersicht über Bildungswege und Abschlüsse in der Schweiz.
         </a>
+
         <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/56918" target="_blank" rel="noopener">
           <b>berufsberatung.ch: Ergänzungsprüfung Passerelle</b>
           Weg von Berufs- oder Fachmaturität zu universitären Hochschulen.
         </a>
+
         <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/10549" target="_blank" rel="noopener">
           <b>berufsberatung.ch: Maturität auf dem 2. Bildungsweg</b>
           Informationen zum späteren Nachholen der gymnasialen Maturität.
         </a>
+
         <a class="link-card" href="https://www.berufsberatung.ch/dyn/show/2732" target="_blank" rel="noopener">
           <b>berufsberatung.ch: Schnupperlehre</b>
           Hinweise zur Planung und zur Erlaubnis der Schule während der Schulzeit.
@@ -595,10 +679,10 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="holpert">
+    <section class="section" id="holpert" aria-labelledby="holpert-title">
       <div class="section-title">
         <div class="section-number">4</div>
-        <h2 id="holpert">Wenn es holpert</h2>
+        <h2 id="holpert-title">Wenn es holpert</h2>
       </div>
 
       <div class="grid two">
@@ -635,10 +719,10 @@
       Ein Zeugnis verschwindet nicht. Aber es verliert mit der Zeit seine Schwerkraft.
     </div>
 
-    <section class="section" aria-labelledby="protokoll">
+    <section class="section" id="protokoll" aria-labelledby="protokoll-title">
       <div class="section-title">
         <div class="section-number">5</div>
-        <h2 id="protokoll">Gespräche, Protokolle und KI</h2>
+        <h2 id="protokoll-title">Gespräche, Protokolle und KI</h2>
       </div>
 
       <div class="grid two">
@@ -684,6 +768,7 @@ Freundliche Grüsse</div>
           <b>EDÖB: Aufzeichnung von Gesprächen</b>
           Hinweise zu Datenschutz und möglichen strafrechtlichen Fragen.
         </a>
+
         <a class="link-card" href="https://www.edoeb.admin.ch/de/datenbearbeitungen-in-der-cloud" target="_blank" rel="noopener">
           <b>EDÖB: Datenbearbeitung in der Cloud</b>
           Hinweise zu Cloud-Diensten, Auftragsbearbeitung und Datenübermittlung.
@@ -691,10 +776,10 @@ Freundliche Grüsse</div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="offen">
+    <section class="section" id="offen" aria-labelledby="offen-title">
       <div class="section-title">
         <div class="section-number">6</div>
-        <h2 id="offen">Wege bleiben offen</h2>
+        <h2 id="offen-title">Wege bleiben offen</h2>
       </div>
 
       <div class="grid two">
@@ -724,10 +809,12 @@ Freundliche Grüsse</div>
           <b>berufsberatung.ch: Vergleich der Hochschultypen</b>
           Überblick über Zugänge und Durchlässigkeit zwischen Hochschultypen.
         </a>
+
         <a class="link-card" href="https://www.sbfi.admin.ch/de/anerkennung-von-berufsqualifikationen" target="_blank" rel="noopener">
           <b>SBFI: Anerkennung von Berufsqualifikationen</b>
           Überblick zu Anerkennungsverfahren und zuständigen Stellen.
         </a>
+
         <a class="link-card" href="https://www.recognition.swiss/de" target="_blank" rel="noopener">
           <b>recognition.swiss: Anerkennung prüfen</b>
           Prüfen, ob für einen Beruf eine Anerkennung nötig ist und welche Stelle zuständig ist.
@@ -735,10 +822,10 @@ Freundliche Grüsse</div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="ablage">
+    <section class="section" id="ablage" aria-labelledby="ablage-title">
       <div class="section-title">
         <div class="section-number">7</div>
-        <h2 id="ablage">Was gehört in die Ablage?</h2>
+        <h2 id="ablage-title">Was gehört in die Ablage?</h2>
       </div>
 
       <div class="grid">
@@ -787,7 +874,7 @@ Freundliche Grüsse</div>
           nicht geradeaus läuft.
         </p>
         <p class="asset-note">
-          Hinweis für die Produktion: Kacheln oben nur mit den gelieferten Originaldateien ersetzen.
+          Produktionshinweis: Kacheln oben nur mit den gelieferten Originaldateien aktivieren.
           Keine neuen Icons einsetzen.
         </p>
       </div>
