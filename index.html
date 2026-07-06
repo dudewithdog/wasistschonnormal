@@ -51,7 +51,7 @@
 
     header {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 24px;
       align-items: start;
       border-bottom: 1px solid var(--line);
@@ -89,13 +89,17 @@
       max-width: 780px;
     }
 
+    /* Kacheln: oben rechts, reine Orientierung, nicht anklickbar */
     .kacheln {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 52px);
       gap: 10px;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: wrap;
-      max-width: 310px;
+      justify-content: end;
+      align-content: start;
+      max-width: 176px;
+      padding-top: 6px;
+      pointer-events: none;
+      user-select: none;
     }
 
     .kacheln img {
@@ -103,7 +107,8 @@
       height: 52px;
       border-radius: 12px;
       object-fit: cover;
-      box-shadow: 0 3px 8px rgba(0,0,0,.12);
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,.14);
     }
 
     .lead {
@@ -388,8 +393,16 @@
       }
 
       .kacheln {
-        justify-content: flex-start;
+        grid-template-columns: repeat(6, 44px);
+        gap: 8px;
         max-width: none;
+        justify-content: start;
+      }
+
+      .kacheln img {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
       }
 
       .grid,
@@ -455,19 +468,14 @@
         <div class="subtitle">Hürden, Umwege und zweite Anläufe im Bildungsweg</div>
       </div>
 
-      <!--
-      ORIGINALKACHELN NUR AKTIVIEREN, WENN DIE DATEIEN WIRKLICH VORLIEGEN.
-      Keine KI-Icons. Keine Ersatzsymbole. Keine Platzhalter.
-
-      <div class="kacheln" aria-label="Funktionszeichen">
-        <img src="assets/kachel_vertiefung_original.png" alt="Vertiefung">
-        <img src="assets/kachel_online_original.png" alt="Online möglich">
+      <div class="kacheln" aria-label="Funktionszeichen, nicht anklickbar">
         <img src="assets/kachel_lebensordner_original.png" alt="Lebensordner">
+        <img src="assets/kachel_online_original.png" alt="Online möglich">
+        <img src="assets/kachel_vertiefung_original.png" alt="Vertiefung">
         <img src="assets/kachel_kantonal_original.png" alt="Kantonal unterschiedlich">
         <img src="assets/kachel_nachpruefen_original.png" alt="Selber nachprüfen">
         <img src="assets/kachel_beratung_original.png" alt="Lass dich beraten">
       </div>
-      -->
     </header>
 
     <p class="lead">
@@ -872,10 +880,6 @@ Freundliche Grüsse</div>
           Diese digitale Zusatzseite ergänzt die Printseite. Sie erklärt, welche Wege,
           Fragen, Gesuche, Links und Unterlagen wichtig werden können, wenn Schule
           nicht geradeaus läuft.
-        </p>
-        <p class="asset-note">
-          Produktionshinweis: Kacheln oben nur mit den gelieferten Originaldateien aktivieren.
-          Keine neuen Icons einsetzen.
         </p>
       </div>
     </footer>
